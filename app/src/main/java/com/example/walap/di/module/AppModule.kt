@@ -5,6 +5,7 @@ import dagger.Module
 @Module(
     includes = [
         ViewModelModule::class,
+        RemoteModule::class,
     ]
 )
 class AppModule
