@@ -21,6 +21,7 @@ class HomeViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ result ->
+                Log.d("abobaperfection","Пришли данные в вью модель")
                 _photoTop.postValue(result)
             }, {
                 Log.d("HomeViewModel","$it")

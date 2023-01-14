@@ -1,5 +1,6 @@
 package com.example.walap.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,7 @@ class WallpaperAdapter() : RecyclerView.Adapter<WallpaperAdapter.MyViewHolder>()
         val positionPhotoModel = photoModels[position]
 
         holder.binding.imageView.load(positionPhotoModel.urls.small)
+        Log.d("abobaperfection","Установил $position")
     }
 
     override fun getItemCount(): Int {

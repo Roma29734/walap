@@ -1,6 +1,7 @@
 package com.example.walap.ui.screen.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,7 +23,9 @@ class HomeFragment :
         binding.mainRecycler.layoutManager = GridLayoutManager(context, 2)
 
         viewModel.getWallpaper()
+        Log.d("abobaperfection","Отправил запрос на получение данных")
         viewModel.photoTop.observe(viewLifecycleOwner) {result ->
+            Log.d("abobaperfection","Установил данные в адаптер")
             adapterWallpaper.setWallpaper(result)
         }
 
