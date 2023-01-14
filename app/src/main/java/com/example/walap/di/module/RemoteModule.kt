@@ -9,6 +9,7 @@ import dagger.Provides
 @Module
 class RemoteModule {
 
+    @Provides
     fun provideWallpaperRepository(impl: WallpaperRepositoryImpl): WallpaperRepository = impl
 
     @Provides

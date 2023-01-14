@@ -1,7 +1,9 @@
 package com.example.walap.data.repository
 
 import com.example.walap.data.model.PhotoModel
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
 
 interface WallpaperRepository {
-    suspend fun getTopPhoto(page: Int): PhotoModel
+    fun getTopPhoto(page: Int): Observable<PhotoModel>
 }

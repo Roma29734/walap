@@ -61,6 +61,8 @@ dependencies {
     def retrofit_version = '2.9.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+//    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.8.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -83,6 +85,7 @@ dependencies {
 
     implementation "io.reactivex.rxjava3:rxjava:$rxJavaVersion"
     implementation "io.reactivex.rxjava3:rxandroid:$rxJavaAndroidVersion"
+
 
     // Coil
     implementation "io.coil-kt:coil:2.2.2"
