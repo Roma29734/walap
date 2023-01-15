@@ -11,5 +11,6 @@
     <color name="mainBlackRound">#181520</color>
     <color name="mainYellowAccent">#FED800</color>
     <color name="mainRedWhiteAccent">#DA546A</color>
-    <color name="mainGreyAccent">#E1E1E1</color>
+    <color name="mainGreyAccent">#4C4949</color>
+    <color name="mainLightGreyAccent">#C6C5C5</color>
 </resources>

@@ -14,6 +14,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@color/white</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
 
@@ -24,6 +25,26 @@
         <item name="android:tint">@android:color/transparent</item>
         <item name="cardElevation">0dp</item>
         <item name="cardCornerRadius">16dp</item>
+    </style>
+
+<!--    -->
+
+<!--    TextView-->
+
+    <style name="textViewTitleMain" parent="TextAppearance.AppCompat" >
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/mainRedWhiteAccent</item>
+        <item name="android:textSize">23sp</item>
+    </style>
+
+<!--    -->
+
+<!--    More-->
+
+    <style name="bottomNavView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/white</item>
+        <item name="itemIconTint">@color/bottom_nav_ic</item>
+        <item name="labelVisibilityMode">unlabeled</item>
     </style>
 
 <!--    -->

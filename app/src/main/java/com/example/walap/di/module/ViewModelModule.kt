@@ -3,6 +3,7 @@ package com.example.walap.di.module
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.walap.ui.screen.home.HomeViewModel
+import com.example.walap.ui.screen.random.RandomViewModel
 import com.example.walap.ui.viewModel.ViewModelFactory
 import dagger.Binds
 import dagger.MapKey
@@ -19,6 +20,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(HomeViewModel::class)
     abstract fun bindHomeViewModel(imagesListViewModel: HomeViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RandomViewModel::class)
+    abstract fun bindRandomViewModel(imagesListViewModel: RandomViewModel): ViewModel
 }
 
 @MustBeDocumented

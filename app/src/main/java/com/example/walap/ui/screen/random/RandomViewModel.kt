@@ -1,4 +1,4 @@
-package com.example.walap.ui.screen.home
+package com.example.walap.ui.screen.random
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -10,23 +10,23 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(
+class RandomViewModel @Inject constructor(
     private val repository: WallpaperRepository
 ): ViewModel() {
 
-    private val _photoTop: MutableLiveData<Resource<PhotoModel>> = MutableLiveData()
-    val photoTop get() = _photoTop
+    private val _randomPhoto: MutableLiveData<Resource<PhotoModel>> = MutableLiveData()
+    val randomPhoto get() = _randomPhoto
 
-    fun getWallpaper() {
-        _photoTop.postValue(Resource.Loading())
-        repository.getTopPhoto(1)
+    fun getRandomPhoto() {
+        _randomPhoto.postValue(Resource.Loading())
+        repository.getRandomPhoto(30)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ result ->
                 Log.d("abobaperfection","Пришли данные в вью модель")
-                _photoTop.postValue(Resource.Success(result))
+                _randomPhoto.postValue(Resource.Success(result))
             }, { exception ->
-                _photoTop.postValue(Resource.Error(exception.message.toString(), null))
+                _randomPhoto.postValue(Resource.Error(exception.message.toString(), null))
                 Log.d("HomeViewModel","$exception")
             })
     }

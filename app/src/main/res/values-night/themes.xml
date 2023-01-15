@@ -15,4 +15,23 @@
         <item name="android:statusBarColor">@color/mainBlackRound</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+    <!--    TextView-->
+
+    <style name="textViewTitleMain" parent="TextAppearance.AppCompat" >
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/mainYellowAccent</item>
+        <item name="android:textSize">23sp</item>
+    </style>
+
+    <!--    -->
+
+<!--    More-->
+    <style name="bottomNavView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/mainBlackRound</item>
+        <item name="itemIconTint">@color/bottom_nav_ic_black</item>
+        <item name="labelVisibilityMode">unlabeled</item>
+    </style>
+<!--    -->
 </resources>

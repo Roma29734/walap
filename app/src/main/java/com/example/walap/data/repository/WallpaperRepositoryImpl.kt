@@ -16,4 +16,8 @@ class WallpaperRepositoryImpl @Inject constructor(
     override fun getTopPhoto(page: Int): Observable<PhotoModel> {
         return apiService.getTopPhoto(page = page, client_id = API_KEY)
     }
+
+    override fun getRandomPhoto(count: Int): Observable<PhotoModel> {
+        return apiService.getRandomPhoto(count, client_id = API_KEY)
+    }
 }
