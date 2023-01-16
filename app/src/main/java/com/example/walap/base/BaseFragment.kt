@@ -34,8 +34,8 @@ abstract class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) :
 
     }
 
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        _viewBinding = null
-//    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _viewBinding = null
+    }
 }

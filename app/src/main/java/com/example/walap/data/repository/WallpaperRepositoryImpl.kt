@@ -13,7 +13,7 @@ class WallpaperRepositoryImpl @Inject constructor(
 
     private val apiService = instance.api
 
-    override fun getTopPhoto(page: Int): Observable<PhotoModel> {
+    override fun getTopPhoto(page: Int): Single<PhotoModel> {
         return apiService.getTopPhoto(page = page, client_id = API_KEY)
     }
 

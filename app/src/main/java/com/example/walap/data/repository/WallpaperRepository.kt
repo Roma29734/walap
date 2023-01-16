@@ -5,7 +5,7 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 
 interface WallpaperRepository {
-    fun getTopPhoto(page: Int): Observable<PhotoModel>
+    fun getTopPhoto(page: Int): Single<PhotoModel>
 
     fun getRandomPhoto(count: Int): Observable<PhotoModel>
 }

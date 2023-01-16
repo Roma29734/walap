@@ -82,9 +82,18 @@ dependencies {
     // RxJava
     def rxJavaVersion = "3.1.5"
     def rxJavaAndroidVersion = "3.0.2"
+    def rxKotlinVersion = "3.0.1"
 
     implementation "io.reactivex.rxjava3:rxjava:$rxJavaVersion"
     implementation "io.reactivex.rxjava3:rxandroid:$rxJavaAndroidVersion"
+    implementation "io.reactivex.rxjava3:rxkotlin:$rxKotlinVersion"
+
+    def paging_version = "3.1.1"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    // optional - RxJava3 support
+    implementation "androidx.paging:paging-rxjava3:$paging_version"
 
     // Coil
     implementation "io.coil-kt:coil:2.2.2"
