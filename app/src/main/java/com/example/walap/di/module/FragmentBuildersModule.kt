@@ -1,6 +1,7 @@
 package com.example.walap.di.module
 
 import com.example.walap.ui.screen.categories.CategoriesFragment
+import com.example.walap.ui.screen.detail.DetailFragment
 import com.example.walap.ui.screen.home.HomeFragment
 import com.example.walap.ui.screen.nav.NavFragment
 import com.example.walap.ui.screen.random.RandomFragment
@@ -27,5 +28,7 @@ abstract class FragmentBuildersModule {
     @ContributesAndroidInjector
     abstract fun contributeNavFragment(): NavFragment
 
+    @ContributesAndroidInjector
+    abstract fun contributeDetailFragment(): DetailFragment
 
 }

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.walap.data.model.PhotoModel
+import com.example.walap.data.model.photoModelItem.PhotoModelItem
 import com.example.walap.databinding.CardWallpaperPresentrBinding
 
 class WallpaperAdapter() : RecyclerView.Adapter<WallpaperAdapter.MyViewHolder>() {
@@ -14,6 +15,8 @@ class WallpaperAdapter() : RecyclerView.Adapter<WallpaperAdapter.MyViewHolder>()
         RecyclerView.ViewHolder(binding.root)
 
     private var photoModels = PhotoModel()
+
+    var clickToImage: ((photo: PhotoModelItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
@@ -28,7 +31,12 @@ class WallpaperAdapter() : RecyclerView.Adapter<WallpaperAdapter.MyViewHolder>()
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val positionPhotoModel = photoModels[position]
 
-        holder.binding.imageView.load(positionPhotoModel.urls.small)
+        holder.binding.imageView.apply {
+            load(positionPhotoModel.urls.small)
+            setOnClickListener{
+                clickToImage?.let { it1 -> it1(positionPhotoModel) }
+            }
+        }
         Log.d("abobaperfection","Установил $position")
     }
 

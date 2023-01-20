@@ -6,8 +6,10 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.walap.R
 import com.example.walap.data.model.photoModelItem.PhotoModelItem
 import com.example.walap.databinding.CardWallpaperPresentrBinding
+import com.google.gson.annotations.Until
 
 class WallpaperPagingAdapter : PagingDataAdapter<PhotoModelItem, WallpaperPagingAdapter.MyViewHolder>(
     COMPARATOR
@@ -16,11 +18,18 @@ class WallpaperPagingAdapter : PagingDataAdapter<PhotoModelItem, WallpaperPaging
         RecyclerView.ViewHolder(binding.root) {
         fun bind(photo: PhotoModelItem) {
             binding.apply {
-                imageView.load(photo.urls.small)
+                imageView.load(photo.urls.small) {
+                    placeholder(R.drawable.ic_random)
+                }
+                imageView.setOnClickListener {
+                    clickToImage?.let { it1 -> it1(photo) }
+                }
             }
         }
     }
 
+
+    var clickToImage: ((photo: PhotoModelItem) -> Unit)? = null
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         getItem(position)?.let {

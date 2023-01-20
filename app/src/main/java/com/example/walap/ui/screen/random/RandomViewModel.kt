@@ -20,9 +20,9 @@ class RandomViewModel @Inject constructor(
     fun getRandomPhoto() {
         _randomPhoto.postValue(Resource.Loading())
         repository.getRandomPhoto(30)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ result ->
+            ?.subscribeOn(Schedulers.io())
+            ?.observeOn(AndroidSchedulers.mainThread())
+            ?.subscribe({ result ->
                 Log.d("abobaperfection","Пришли данные в вью модель")
                 _randomPhoto.postValue(Resource.Success(result))
             }, { exception ->

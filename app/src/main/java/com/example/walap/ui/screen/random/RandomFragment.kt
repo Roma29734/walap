@@ -10,9 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.walap.R
 import com.example.walap.base.BaseFragment
+import com.example.walap.data.toTransition
 import com.example.walap.databinding.FragmentRandomBinding
 import com.example.walap.ui.adapter.WallpaperAdapter
 import com.example.walap.ui.screen.home.HomeViewModel
+import com.example.walap.ui.screen.nav.NavFragmentDirections
 import com.example.walap.utils.Resource
 
 
@@ -25,6 +27,12 @@ class RandomFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        adapterWallpaper.clickToImage = {
+            val model = it.toTransition(it.urls.full)
+            val action = NavFragmentDirections.actionNavFragmentToDetailFragment(model)
+            mainNavController.navigate(action)
+        }
 
         binding.apply {
             upBar.textView.text = "Random"
@@ -46,6 +54,7 @@ class RandomFragment :
                     binding.progressBar.visibility = View.INVISIBLE
                     it.data?.let { it1 -> adapterWallpaper.setWallpaper(it1) }
                 }
+                else -> {}
             }
         }
     }

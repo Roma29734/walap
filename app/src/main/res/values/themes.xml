@@ -27,6 +27,20 @@
         <item name="cardCornerRadius">16dp</item>
     </style>
 
+    <style name="cardViewMainImageView" parent="CardView" >
+        <item name="android:backgroundTint">@color/mainBlackRound</item>
+        <item name="android:tint">@android:color/transparent</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">32dp</item>
+    </style>
+
+    <style name="cardViewCategoriesList" parent="CardView" >
+        <item name="android:backgroundTint">@color/mainBlackRound</item>
+        <item name="android:tint">@android:color/transparent</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">32dp</item>
+    </style>
+
 <!--    -->
 
 <!--    TextView-->

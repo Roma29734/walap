@@ -6,13 +6,21 @@
     app:startDestination="@id/navFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.walap.ui.screen.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
         android:id="@+id/navFragment"
         android:name="com.example.walap.ui.screen.nav.NavFragment"
         android:label="fragment_nav"
-        tools:layout="@layout/fragment_nav" />
+        tools:layout="@layout/fragment_nav" >
+        <action
+            android:id="@+id/action_navFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.walap.ui.screen.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="photo"
+            app:argType="com.example.walap.data.model.TransitionPhotoModel" />
+    </fragment>
 </navigation>

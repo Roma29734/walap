@@ -1,8 +1,10 @@
 package com.example.walap.data.api
 
 import com.example.walap.data.model.PhotoModel
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -22,4 +24,12 @@ interface ApiService {
         @Query("count") count: Int,
         @Query("client_id") client_id: String,
     ): Observable<PhotoModel>
+
+    @GET("photos?")
+    fun getPhoto(
+        @Query("page") page: Int,
+        @Query("client_id") client_id: String,
+    ): Call<PhotoModel>
+
+
 }

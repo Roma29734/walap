@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
+import com.example.walap.R
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -15,6 +18,13 @@ abstract class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) :
     DaggerFragment() {
     private var _viewBinding: B? = null
     protected val binding get() = checkNotNull(_viewBinding)
+
+    protected val mainNavController: NavController by lazy {
+        Navigation.findNavController(
+            requireActivity(),
+            R.id.fragmentContainerView
+        )
+    }
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -34,8 +44,8 @@ abstract class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) :
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _viewBinding = null
-    }
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        _viewBinding = null
+//    }
 }

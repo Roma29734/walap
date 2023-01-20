@@ -1,5 +1,6 @@
 package com.example.walap.data.pager
 
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -14,6 +15,7 @@ class PagerRepository @Inject constructor(
 ) {
 
     fun getMovie(): Flowable<PagingData<PhotoModelItem>> {
+        Log.d("aboa","запрос в ПагерРепазитории")
         val pager = Pager(
             config = PagingConfig(
                 pageSize = 10,
