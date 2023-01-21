@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="mainBlackRound">#181520</color>
+    <color name="secondBlackRound">#231D34</color>
     <color name="mainYellowAccent">#FED800</color>
     <color name="mainRedWhiteAccent">#DA546A</color>
     <color name="mainGreyAccent">#4C4949</color>

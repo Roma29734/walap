@@ -6,8 +6,7 @@ import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.rxjava3.cachedIn
 import com.example.walap.data.model.photoModelItem.PhotoModelItem
-import com.example.walap.data.pager.PagerRepository
-import com.example.walap.data.repository.WallpaperRepository
+import com.example.walap.data.remote.pager.PagerRepository
 import com.example.walap.utils.Resource
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers

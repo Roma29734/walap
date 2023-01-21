@@ -1,7 +1,7 @@
-package com.example.walap.data.api
+package com.example.walap.data.remote.api
 
 import com.example.walap.data.model.PhotoModel
-import io.reactivex.rxjava3.core.Completable
+import com.example.walap.data.model.SearchModel
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Call
@@ -12,6 +12,7 @@ interface ApiService {
 
 //https://api.unsplash.com/photos?page=1&client_id=_
 //https://api.unsplash.com/photos/random?count=2&client_id=
+//https://api.unsplash.com/search/photos?query=amoled&client_id=
 
     @GET("photos?")
     fun getTopPhoto(
@@ -25,11 +26,11 @@ interface ApiService {
         @Query("client_id") client_id: String,
     ): Observable<PhotoModel>
 
-    @GET("photos?")
-    fun getPhoto(
+    @GET("search/photos?")
+    fun getSearchPhoto(
+        @Query("query") query: String,
         @Query("page") page: Int,
         @Query("client_id") client_id: String,
-    ): Call<PhotoModel>
-
+    ): Single<SearchModel>
 
 }

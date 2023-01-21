@@ -1,10 +1,11 @@
-package com.example.walap.data.pager
+package com.example.walap.data.remote.pager
 
 import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.rxjava3.flowable
+import androidx.room.Query
 import com.example.walap.data.model.photoModelItem.PhotoModelItem
 import com.example.walap.data.repository.WallpaperRepository
 import io.reactivex.rxjava3.core.Flowable
@@ -15,7 +16,7 @@ class PagerRepository @Inject constructor(
 ) {
 
     fun getMovie(): Flowable<PagingData<PhotoModelItem>> {
-        Log.d("aboa","запрос в ПагерРепазитории")
+        Log.d("aboa", "запрос в ПагерРепазитории")
         val pager = Pager(
             config = PagingConfig(
                 pageSize = 10,
@@ -26,6 +27,23 @@ class PagerRepository @Inject constructor(
             )
         ) {
             GetPhotoPager(repository)
+        }.flowable
+
+        return pager
+    }
+
+    fun getSearchPhoto(query: String): Flowable<PagingData<PhotoModelItem>> {
+        Log.d("aboa", "запрос в ПагерРепазитории")
+        val pager = Pager(
+            config = PagingConfig(
+                pageSize = 10,
+                enablePlaceholders = true,
+                maxSize = 50,
+                prefetchDistance = 5,
+                initialLoadSize = 20
+            )
+        ) {
+            GetSearchPhotoPager(repository = repository, query = query)
         }.flowable
 
         return pager

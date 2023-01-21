@@ -1,7 +1,8 @@
 package com.example.walap.di.module
 
-import com.example.walap.data.api.RetrofitInstance
-import com.example.walap.data.pager.GetPhotoPager
+import com.example.walap.data.local.dao.WallpaperDao
+import com.example.walap.data.remote.api.RetrofitInstance
+import com.example.walap.data.remote.pager.GetPhotoPager
 import com.example.walap.data.repository.WallpaperRepository
 import com.example.walap.data.repository.WallpaperRepositoryImpl
 import dagger.Module
@@ -14,8 +15,11 @@ class RemoteModule {
     fun provideWallpaperRepository(impl: WallpaperRepositoryImpl): WallpaperRepository = impl
 
     @Provides
-    fun provideWallpaperRepositoryImpl(instance: RetrofitInstance): WallpaperRepositoryImpl =
-        WallpaperRepositoryImpl(instance)
+    fun provideWallpaperRepositoryImpl(
+        instance: RetrofitInstance,
+        dao: WallpaperDao
+    ): WallpaperRepositoryImpl =
+        WallpaperRepositoryImpl(instance, dao)
 
     @Provides
     fun provideRetrofitInstance(): RetrofitInstance = RetrofitInstance

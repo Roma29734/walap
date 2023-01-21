@@ -1,4 +1,4 @@
-package com.example.walap.data.api
+package com.example.walap.data.remote.api
 
 import com.example.walap.utils.BASE_URL
 

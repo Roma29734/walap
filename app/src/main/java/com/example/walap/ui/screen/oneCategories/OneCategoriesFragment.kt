@@ -1,50 +1,51 @@
-package com.example.walap.ui.screen.home
+package com.example.walap.ui.screen.oneCategories
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.walap.R
 import com.example.walap.base.BaseFragment
 import com.example.walap.data.toTransition
-import com.example.walap.databinding.FragmentHomeBinding
-import com.example.walap.ui.adapter.WallpaperAdapter
+import com.example.walap.databinding.FragmentCategoriesBinding
+import com.example.walap.databinding.FragmentOneCategoriesBinding
 import com.example.walap.ui.adapter.WallpaperPagingAdapter
 import com.example.walap.ui.screen.nav.NavFragmentDirections
-import com.example.walap.utils.InternetConnection
 import com.example.walap.utils.Resource
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.kotlin.subscribeBy
-import io.reactivex.rxjava3.schedulers.Schedulers
 
-class HomeFragment :
-    BaseFragment<FragmentHomeBinding>
-        (FragmentHomeBinding::inflate) {
+class OneCategoriesFragment :
+    BaseFragment<FragmentOneCategoriesBinding>
+        (FragmentOneCategoriesBinding::inflate) {
 
-    private val viewModel: HomeViewModel by viewModels { viewModelFactory }
-    private val pagerAdapter = WallpaperPagingAdapter()
+    private val args: OneCategoriesFragmentArgs by navArgs()
+    private val viewModel: OneCategoriesViewModel by viewModels { viewModelFactory }
+    private val adapter = WallpaperPagingAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        pagerAdapter.clickToImage = {
+        binding.apply {
+            mainRecycler.adapter = adapter
+            mainRecycler.layoutManager = GridLayoutManager(context, 2)
+            include.textView.text = args.name
+            include.imgButtonBack.setOnClickListener { mainNavController.popBackStack() }
+        }
+
+        adapter.clickToImage = {
             val model = it.toTransition(it.urls.full)
-            val action = NavFragmentDirections.actionNavFragmentToDetailFragment(model)
+            val action = OneCategoriesFragmentDirections.actionOneCategoriesFragmentToDetailFragment(model)
             mainNavController.navigate(action)
         }
 
-        binding.apply {
-            upBar.textView.text = "New"
-            mainRecycler.adapter = pagerAdapter
-            mainRecycler.layoutManager = GridLayoutManager(context, 2)
-        }
-
-        viewModel.getWallpaper()
+        viewModel.getWallpaper(args.name)
         Log.d("homeAbobe", "отправил запрос")
-        viewModel.movieList.observe(viewLifecycleOwner) {
+        viewModel.oneCategoriList.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {
                     Log.d("homeAbobe", "зашел взагрузку")
@@ -58,11 +59,10 @@ class HomeFragment :
                     Log.d("homeAbobe", "зашел в все збс")
                     binding.progressBar.visibility = View.INVISIBLE
 
-                    it.data?.let { it1 -> pagerAdapter.submitData(lifecycle, it1) }
+                    it.data?.let { it1 -> adapter.submitData(lifecycle, it1) }
                 }
                 else -> {}
             }
         }
-
     }
 }
