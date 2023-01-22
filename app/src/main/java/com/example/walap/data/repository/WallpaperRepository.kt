@@ -11,13 +11,11 @@ import retrofit2.http.Query
 
 interface WallpaperRepository {
 
-    fun getTopPhoto(page: Int): Single<PhotoModel>?
+    fun getTopPhoto(page: Int): Single<PhotoModel>
 
-    fun getRandomPhoto(count: Int): Observable<PhotoModel>?
+    fun getRandomPhoto(count: Int): Observable<PhotoModel>
 
-    fun getTopPhotoPro(page: Int): Single<ResultRepo<PhotoModel>>
-
-    fun getSearchPhoto(query: String, page: Int): Single<ResultRepo<SearchModel>>
+    fun getSearchPhoto(query: String, page: Int): Single<SearchModel>
 
 //    fun getTestPhoto(page: Int): Single<ResultRepo<PhotoModel>>
     fun insertCategories(categoriesEntity: CategoriesEntity)

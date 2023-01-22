@@ -45,7 +45,7 @@ class OneCategoriesFragment :
 
         viewModel.getWallpaper(args.name)
         Log.d("homeAbobe", "отправил запрос")
-        viewModel.oneCategoriList.observe(viewLifecycleOwner) {
+        viewModel.oneCategoriesList.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {
                     Log.d("homeAbobe", "зашел взагрузку")
@@ -61,7 +61,6 @@ class OneCategoriesFragment :
 
                     it.data?.let { it1 -> adapter.submitData(lifecycle, it1) }
                 }
-                else -> {}
             }
         }
     }

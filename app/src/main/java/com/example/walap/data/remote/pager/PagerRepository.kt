@@ -16,7 +16,6 @@ class PagerRepository @Inject constructor(
 ) {
 
     fun getMovie(): Flowable<PagingData<PhotoModelItem>> {
-        Log.d("aboa", "запрос в ПагерРепазитории")
         val pager = Pager(
             config = PagingConfig(
                 pageSize = 10,
@@ -33,7 +32,6 @@ class PagerRepository @Inject constructor(
     }
 
     fun getSearchPhoto(query: String): Flowable<PagingData<PhotoModelItem>> {
-        Log.d("aboa", "запрос в ПагерРепазитории")
         val pager = Pager(
             config = PagingConfig(
                 pageSize = 10,

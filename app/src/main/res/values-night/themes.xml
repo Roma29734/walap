@@ -46,6 +46,18 @@
 
 <!--    -->
 
+<!--    ImageView-->
+
+    <style name="imgButtonBack" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:tint">@color/white</item>
+    </style>
+
+<!--    -->
+
+
 <!--    More-->
     <style name="bottomNavView" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="android:background">@color/mainBlackRound</item>

@@ -1,12 +1,15 @@
 package com.example.walap.data.remote.pager
 
-import android.util.Log
 import androidx.paging.PagingState
 import androidx.paging.rxjava3.RxPagingSource
+import com.example.walap.data.model.PhotoModel
 import com.example.walap.data.model.photoModelItem.PhotoModelItem
 import com.example.walap.data.repository.WallpaperRepository
-import com.example.walap.utils.ResultRepo
 import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
+import retrofit2.HttpException
+import java.io.IOException
+import java.io.InvalidObjectException
 
 class GetPhotoPager(
     private val repository: WallpaperRepository,
@@ -23,75 +26,29 @@ class GetPhotoPager(
         val page = params.key ?: 1
 
         return try {
-            repository.getTopPhotoPro(page)
-                .flatMap { result ->
-                    when (result) {
-
-                        is ResultRepo.Error -> {
-                            Log.d("checkIthernetConnect", "обработал ошибку")
-                            Log.d(
-                                "checkBagInIthernetConnect",
-                                "Пришла ошбика, обробатываю pagerGet"
-                            )
-                            Single.just(result.message?.let { LoadResult.Error(it) }!!)
-                        }
-                        is ResultRepo.Success -> {
-                            Log.d(
-                                "checkBagInIthernetConnect",
-                                "Пришли отличные данные, обробатываю pagerGet"
-                            )
-                            Single.just(result.data!!.let {
-                                LoadResult.Page(
-                                    it,
-                                    prevKey = if (page == 1) null else page - 1,
-                                    nextKey = if (it.isEmpty()) null else page + 1,
-                                )
-                            })
-                        }
-                    }
+            repository.getTopPhoto(page)
+                .subscribeOn(Schedulers.io())
+                .map {
+                    toLoadResult(it, page)
+                }.onErrorReturn {
+                    LoadResult.Error(it)
                 }
-
-//            responce.map {
-//                LoadResult.Page(
-//                    it,
-//                    prevKey = if (page == 1) null else page - 1,
-//                    nextKey = if(it.isEmpty()) null else page +1,
-//                )
-//            }
-        } catch (e: Exception) {
-            Log.d("checkBagInIthernetConnect", "Словил ошибку pagerGet")
-            Log.d("aboaExpection", "Сработал catch")
-            Single.just(LoadResult.Error(e))
+        } catch (exception: IOException) {
+            Single.just(LoadResult.Error(exception))
+        } catch (exception: HttpException) {
+            Single.just(LoadResult.Error(exception))
+        } catch (exception: InvalidObjectException) {
+            Single.just(LoadResult.Error(exception))
+        } catch (exception: Exception) {
+            Single.just(LoadResult.Error(exception))
         }
+    }
 
-}
-
-
-
-//
-//class GithubPagingSource(
-//    private val api: NetworkApi,
-//    private val userName: String
-//) : PagingSource<Int, Repository>() {
-//
-//    override fun getRefreshKey(state: PagingState<Int, Repository>): Int? {
-//        return state.anchorPosition?.let { anchorPosition ->
-//            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
-//                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
-//        }
-//    }
-//
-//    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Repository> {
-//        return try {
-//            val page = params.key ?: FIRST_PAGE
-//            val response = api.fetchRepos(userName, page, params.loadSize)
-//            LoadResult.Page(
-//                data = response,
-//                prevKey = if (page == FIRST_PAGE) null else page - 1,
-//                nextKey = if (response.isEmpty()) null else page + 1
-//            )
-//        } catch (e: Exception) {
-//            LoadResult.Error(e)
-//        }
-//    }
+    private fun toLoadResult(data: PhotoModel, position: Int): LoadResult<Int, PhotoModelItem> {
+        return LoadResult.Page(
+            data = data,
+            prevKey = if (position == 1) null else position - 1,
+            nextKey = if (data.isEmpty()) null else position + 1
+        )
+    }
 }
