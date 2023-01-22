@@ -58,7 +58,7 @@ class SearchFragment :
         viewModel.searchWallpaperResult.observe(viewLifecycleOwner) {result ->
             when (result) {
                 is Resource.Loading -> {
-                    Log.d("homeAbobe", "зашел взагрузку")
+                    Log.d("acurat8","принял статус загрузка")
                     binding.progressBar.visibility = View.VISIBLE
                 }
                 is Resource.Error -> {
@@ -66,13 +66,12 @@ class SearchFragment :
                     Toast.makeText(context, "${result.message}", Toast.LENGTH_SHORT).show()
                 }
                 is Resource.Success -> {
-                    Log.d("homeAbobe", "зашел в все збс")
+                    Log.d("acurat8","принял статус все збс")
                     binding.progressBar.visibility = View.INVISIBLE
 
                     result.data?.let { it1 -> adapter.submitData(lifecycle, it1) }
                 }
             }
         }
-
     }
 }

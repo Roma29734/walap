@@ -11,6 +11,7 @@
         style="@style/SearchViewStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:iconifiedByDefault="false"
         app:queryHint="@string/enter_your_request"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

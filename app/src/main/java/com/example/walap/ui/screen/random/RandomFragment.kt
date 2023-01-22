@@ -30,14 +30,13 @@ class RandomFragment :
         }
 
         binding.apply {
-            upBar.textView.text = "Random"
             mainRecycler.adapter = adapterWallpaper
             mainRecycler.layoutManager = GridLayoutManager(context, 2)
         }
 
         viewModel.getRandomPhoto()
         viewModel.randomPhoto.observe(viewLifecycleOwner) {
-            when(it) {
+            when (it) {
                 is Resource.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
                 }
@@ -49,7 +48,6 @@ class RandomFragment :
                     binding.progressBar.visibility = View.INVISIBLE
                     it.data?.let { it1 -> adapterWallpaper.setWallpaper(it1) }
                 }
-                else -> {}
             }
         }
     }

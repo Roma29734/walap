@@ -27,7 +27,7 @@ class SearchViewModel @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     fun searchWallpaper(query: String) {
         _searchWallpaperResult.postValue(Resource.Loading())
-        Log.d("amega3","отправил запрос на получение")
+        Log.d("acurat8","установил статус загрузка")
         pagerRepository.getSearchPhoto(query = query)
             .cachedIn(viewModelScope)
             .subscribeOn(Schedulers.io())
@@ -35,6 +35,7 @@ class SearchViewModel @Inject constructor(
             .subscribeBy(onNext = { result ->
                 Log.d("amega3","подписался на ответ ")
                 _searchWallpaperResult.value = Resource.Success(result)
+                Log.d("acurat8","установил статус все збс")
                 Log.d("amega3","присвоил ответ")
             }, onError = { exeption ->
                 _searchWallpaperResult.postValue(Resource.Error(exeption.message.toString()))

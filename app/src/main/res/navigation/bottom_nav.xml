@@ -20,4 +20,9 @@
         android:name="com.example.walap.ui.screen.categories.CategoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" />
+    <fragment
+        android:id="@+id/search"
+        android:name="com.example.walap.ui.screen.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
 </navigation>

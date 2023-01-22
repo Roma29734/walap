@@ -8,9 +8,9 @@
         android:icon="@drawable/ic_home"
         />
     <item
-        android:id="@+id/random"
-        android:title="random"
-        android:icon="@drawable/ic_random"
+        android:id="@+id/search"
+        android:title="search"
+        android:icon="@drawable/ic_search"
         />
     <item
         android:id="@+id/categories"
