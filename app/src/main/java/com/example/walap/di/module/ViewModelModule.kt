@@ -3,11 +3,12 @@ package com.example.walap.di.module
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.walap.ui.screen.categories.CategoriesViewModel
-import com.example.walap.ui.screen.home.HomeViewModel
 import com.example.walap.ui.screen.nav.NavViewModel
 import com.example.walap.ui.screen.oneCategories.OneCategoriesViewModel
 import com.example.walap.ui.screen.random.RandomViewModel
+import com.example.walap.ui.screen.search.SearchViewModel
 import com.example.walap.ui.screen.start.StartViewModel
+import com.example.walap.ui.screen.topPhoto.TopPhotoViewModel
 import com.example.walap.ui.viewModel.ViewModelFactory
 import dagger.Binds
 import dagger.MapKey
@@ -22,13 +23,18 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(HomeViewModel::class)
-    abstract fun bindHomeViewModel(imagesListViewModel: HomeViewModel): ViewModel
+    @ViewModelKey(TopPhotoViewModel::class)
+    abstract fun bindTopPhotoViewModel(imagesListViewModel: TopPhotoViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(RandomViewModel::class)
     abstract fun bindRandomViewModel(imagesListViewModel: RandomViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchViewModel::class)
+    abstract fun bindSearchViewModel(imagesListViewModel: SearchViewModel): ViewModel
 
     @Binds
     @IntoMap
