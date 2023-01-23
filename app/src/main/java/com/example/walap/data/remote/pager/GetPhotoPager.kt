@@ -1,5 +1,8 @@
 package com.example.walap.data.remote.pager
 
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.paging.PagingState
 import androidx.paging.rxjava3.RxPagingSource
 import com.example.walap.data.model.PhotoModel
@@ -26,16 +29,27 @@ class GetPhotoPager(
         val page = params.key ?: 1
 
         return try {
+//            if(page == 3) {
+//                throw Exception("Hi There!")
+//            }
+
+            Log.d("page",page.toString())
             repository.getTopPhoto(page)
                 .subscribeOn(Schedulers.io())
                 .map {
                     toLoadResult(it, page)
                 }.onErrorReturn {
+                    Log.d("page","словил ошибку интерента rxJava")
+
                     LoadResult.Error(it)
                 }
+
         } catch (exception: IOException) {
+
+            Log.d("page","словил ошибку интерента IoEx")
             Single.just(LoadResult.Error(exception))
         } catch (exception: HttpException) {
+            Log.d("page","словил ошибку интерента httpEx")
             Single.just(LoadResult.Error(exception))
         } catch (exception: InvalidObjectException) {
             Single.just(LoadResult.Error(exception))

@@ -1,6 +1,7 @@
 package com.example.walap.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -28,13 +29,30 @@ class WallpaperPagingAdapter : PagingDataAdapter<PhotoModelItem, WallpaperPaging
         }
     }
 
-
     var clickToImage: ((photo: PhotoModelItem) -> Unit)? = null
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        getItem(position)?.let {
-            holder.bind(it)
+
+        val photo = getItem(position)
+        holder.binding.apply {
+            if (photo != null) {
+                imageView.load(photo.urls.small) {
+                    listener(onStart = {
+                        holder.binding.progressBar.visibility = View.VISIBLE
+                    }, onSuccess = { _, _ ->
+                        holder.binding.progressBar.visibility = View.INVISIBLE
+                    })
+                    placeholder( R.drawable.ic_random )
+                }
+            }
+            imageView.setOnClickListener {
+                clickToImage?.let { it1 -> photo?.let { it2 -> it1(it2) } }
+            }
         }
+
+//        getItem(position)?.let {
+//            holder.bind(it)
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
