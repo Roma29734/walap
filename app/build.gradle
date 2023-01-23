@@ -47,8 +47,8 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
@@ -75,7 +75,6 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     androidTestImplementation "androidx.room:room-testing:$room_version"
-//    implementation "android.arch.persistence.room:rxjava3:$room_version"
     implementation "androidx.room:room-rxjava3:$room_version"
 
 
@@ -97,11 +96,10 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxandroid:$rxJavaAndroidVersion"
     implementation "io.reactivex.rxjava3:rxkotlin:$rxKotlinVersion"
 
+    // Paging
     def paging_version = "3.1.1"
 
     implementation "androidx.paging:paging-runtime:$paging_version"
-
-    // optional - RxJava3 support
     implementation "androidx.paging:paging-rxjava3:$paging_version"
 
     // Coil
