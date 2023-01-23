@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.example.walap.R
@@ -20,6 +21,16 @@ class DetailFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.mainImageView.load(args.photo.url)
+        binding.apply {
+            mainImageView.load(args.photo.url) {
+                listener(onStart = {
+                    binding.progressBar.isVisible = true
+                }, onSuccess = { _, _ ->
+                    binding.progressBar.isVisible = false
+                })
+                placeholder( R.drawable.ic_random )
+            }
+            upBar.imageButtonBack.setOnClickListener { mainNavController.popBackStack() }
+        }
     }
 }

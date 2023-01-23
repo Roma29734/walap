@@ -2,9 +2,12 @@ package com.example.walap.ui.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.walap.R
 import com.example.walap.data.model.PhotoModel
 import com.example.walap.data.model.photoModelItem.PhotoModelItem
 import com.example.walap.databinding.CardWallpaperPresentrBinding
@@ -32,7 +35,14 @@ class WallpaperAdapter() : RecyclerView.Adapter<WallpaperAdapter.MyViewHolder>()
         val positionPhotoModel = photoModels[position]
 
         holder.binding.imageView.apply {
-            load(positionPhotoModel.urls.small)
+            load(positionPhotoModel.urls.small) {
+                listener(onStart = {
+                    holder.binding.progressBar.isVisible = true
+                }, onSuccess = { _, _ ->
+                    holder.binding.progressBar.isVisible = false
+                })
+                placeholder( R.drawable.ic_random )
+            }
             setOnClickListener{
                 clickToImage?.let { it1 -> it1(positionPhotoModel) }
             }

@@ -96,6 +96,14 @@
         <item name="android:tint">@color/black</item>
     </style>
 
+
+    <style name="imgButtonBackDetail" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:tint">@color/white</item>
+        <item name="android:background">@drawable/roud_backround</item>
+    </style>
+
 <!--    -->
 
 <!--    More-->

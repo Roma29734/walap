@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.walap.R
 import com.example.walap.base.BaseFragment
@@ -30,6 +31,7 @@ class OneCategoriesFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        settingAdapter()
         binding.apply {
             mainRecycler.adapter = adapter
             mainRecycler.layoutManager = GridLayoutManager(context, 2)
@@ -60,6 +62,25 @@ class OneCategoriesFragment :
                     binding.progressBar.visibility = View.INVISIBLE
 
                     it.data?.let { it1 -> adapter.submitData(lifecycle, it1) }
+                }
+            }
+        }
+    }
+
+    private fun settingAdapter() {
+        adapter.addLoadStateListener { loadState ->
+            if (loadState.refresh is LoadState.Loading ||
+                loadState.append is LoadState.Loading
+            ) { } else {
+
+                val errorState = when {
+                    loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+                    loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+                    loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+                    else -> null
+                }
+                errorState?.let {
+                    Toast.makeText(context, it.error.toString(), Toast.LENGTH_LONG).show()
                 }
             }
         }

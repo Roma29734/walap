@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.walap.base.BaseFragment
 import com.example.walap.data.toTransition
@@ -30,6 +31,7 @@ class SearchFragment :
         }
 
 //        Настройка view
+        settingAdapter()
         binding.apply {
 //            Настройка ресайкла
             recyclerView.adapter = adapter
@@ -70,6 +72,25 @@ class SearchFragment :
                     binding.progressBar.visibility = View.INVISIBLE
 
                     result.data?.let { it1 -> adapter.submitData(lifecycle, it1) }
+                }
+            }
+        }
+    }
+
+    private fun settingAdapter() {
+        adapter.addLoadStateListener { loadState ->
+            if (loadState.refresh is LoadState.Loading ||
+                loadState.append is LoadState.Loading
+            ) { } else {
+
+                val errorState = when {
+                    loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+                    loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+                    loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+                    else -> null
+                }
+                errorState?.let {
+                    Toast.makeText(context, it.error.toString(), Toast.LENGTH_LONG).show()
                 }
             }
         }

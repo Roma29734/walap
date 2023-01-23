@@ -3,6 +3,7 @@ package com.example.walap.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -38,9 +39,9 @@ class WallpaperPagingAdapter : PagingDataAdapter<PhotoModelItem, WallpaperPaging
             if (photo != null) {
                 imageView.load(photo.urls.small) {
                     listener(onStart = {
-                        holder.binding.progressBar.visibility = View.VISIBLE
+                        holder.binding.progressBar.isVisible = true
                     }, onSuccess = { _, _ ->
-                        holder.binding.progressBar.visibility = View.INVISIBLE
+                        holder.binding.progressBar.isVisible = false
                     })
                     placeholder( R.drawable.ic_random )
                 }

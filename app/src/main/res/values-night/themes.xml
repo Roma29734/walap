@@ -29,6 +29,13 @@
 
 <!--    CardView-->
 
+    <style name="cardViewProfileMain" parent="CardView">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:tint">@android:color/transparent</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">16dp</item>
+    </style>
+
     <style name="cardViewMainImageView" parent="CardView" >
         <item name="android:backgroundTint">@color/black</item>
         <item name="android:tint">@android:color/transparent</item>
@@ -53,6 +60,13 @@
         <item name="android:layout_width">48dp</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:tint">@color/white</item>
+    </style>
+
+    <style name="imgButtonBackDetail" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:tint">@color/black</item>
+        <item name="android:background">@drawable/roud_backround_black</item>
     </style>
 
 <!--    -->
