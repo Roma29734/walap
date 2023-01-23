@@ -16,8 +16,5 @@ Additional libraries
 * Room
 * Retrofit
 
-<<<<<<< HEAD
+---
 You can download the latest available version [here](https://t.me/apkPublicPrograms/13)
-=======
-You can download the latest available version [here](https://t.me/apkPublicPrograms)
->>>>>>> d5fc01c11ea45bb65b005dd33600278673e13ad3
