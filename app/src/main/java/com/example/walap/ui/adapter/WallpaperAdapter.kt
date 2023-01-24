@@ -2,7 +2,6 @@ package com.example.walap.ui.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -41,13 +40,13 @@ class WallpaperAdapter() : RecyclerView.Adapter<WallpaperAdapter.MyViewHolder>()
                 }, onSuccess = { _, _ ->
                     holder.binding.progressBar.isVisible = false
                 })
-                placeholder( R.drawable.ic_plug )
+                placeholder(R.drawable.ic_plug)
             }
-            setOnClickListener{
+            setOnClickListener {
                 clickToImage?.let { it1 -> it1(positionPhotoModel) }
             }
         }
-        Log.d("abobaperfection","Установил $position")
+        Log.d("abobaperfection", "Установил $position")
     }
 
     override fun getItemCount(): Int {

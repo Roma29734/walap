@@ -3,11 +3,9 @@ package com.example.walap.data.repository
 import com.example.walap.data.model.PhotoModel
 import com.example.walap.data.model.SearchModel
 import com.example.walap.data.model.entity.CategoriesEntity
-import com.example.walap.utils.ResultRepo
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
-import retrofit2.http.Query
 
 interface WallpaperRepository {
 
@@ -17,7 +15,7 @@ interface WallpaperRepository {
 
     fun getSearchPhoto(query: String, page: Int): Single<SearchModel>
 
-//    fun getTestPhoto(page: Int): Single<ResultRepo<PhotoModel>>
+//    Local
     fun insertCategories(categoriesEntity: CategoriesEntity)
 
     fun readCategories(): Flowable<List<CategoriesEntity>>

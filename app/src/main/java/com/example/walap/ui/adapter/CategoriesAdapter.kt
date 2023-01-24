@@ -7,7 +7,6 @@ import coil.load
 import com.example.walap.data.model.entity.CategoriesEntity
 import com.example.walap.databinding.CategoriesCardBinding
 
-
 class CategoriesAdapter() : RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(val binding: CategoriesCardBinding) :

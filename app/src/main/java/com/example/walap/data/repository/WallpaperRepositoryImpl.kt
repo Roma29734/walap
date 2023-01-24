@@ -34,13 +34,6 @@ class WallpaperRepositoryImpl @Inject constructor(
 // Local
 
     override fun insertCategories(categoriesEntity: CategoriesEntity) {
-//        Observable.just(categoriesEntity)
-//            .observeOn(Schedulers.io())
-//            .subscribeBy (onNext = {
-//                dao.insertCategories(it)
-//            }, onError = {
-//
-//            })
         dao.insertCategories(categoriesEntity)
     }
 

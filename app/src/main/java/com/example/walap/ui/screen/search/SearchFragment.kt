@@ -1,7 +1,6 @@
 package com.example.walap.ui.screen.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -39,7 +38,8 @@ class SearchFragment :
 
 //            Настройка searchView
 
-            SearchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            SearchView.setOnQueryTextListener(object :
+                androidx.appcompat.widget.SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(p0: String?): Boolean {
                     if (p0 != null) {
                         if (p0.isNotEmpty()) p0.let { viewModel.searchWallpaper(p0) }
@@ -57,10 +57,9 @@ class SearchFragment :
         }
 
 //        Получение результата поисков
-        viewModel.searchWallpaperResult.observe(viewLifecycleOwner) {result ->
+        viewModel.searchWallpaperResult.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Resource.Loading -> {
-                    Log.d("acurat8","принял статус загрузка")
                     binding.progressBar.visibility = View.VISIBLE
                 }
                 is Resource.Error -> {
@@ -68,7 +67,6 @@ class SearchFragment :
                     Toast.makeText(context, "${result.message}", Toast.LENGTH_SHORT).show()
                 }
                 is Resource.Success -> {
-                    Log.d("acurat8","принял статус все збс")
                     binding.progressBar.visibility = View.INVISIBLE
 
                     result.data?.let { it1 -> adapter.submitData(lifecycle, it1) }
@@ -81,7 +79,8 @@ class SearchFragment :
         adapter.addLoadStateListener { loadState ->
             if (loadState.refresh is LoadState.Loading ||
                 loadState.append is LoadState.Loading
-            ) { } else {
+            ) {
+            } else {
 
                 val errorState = when {
                     loadState.append is LoadState.Error -> loadState.append as LoadState.Error

@@ -1,10 +1,8 @@
 package com.example.walap.data.remote.api
 
 import com.example.walap.utils.BASE_URL
-
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
-
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {

@@ -31,7 +31,7 @@ class NavFragment :
         super.onStart()
         viewModel.getSizeTable()
         viewModel.stateCreateTable.observe(viewLifecycleOwner) {
-            if(it != true) {
+            if (it != true) {
                 mainNavController.navigate(R.id.action_navFragment_to_startFragment)
             }
         }

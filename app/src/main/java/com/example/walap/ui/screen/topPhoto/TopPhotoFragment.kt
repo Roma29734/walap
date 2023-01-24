@@ -1,11 +1,8 @@
 package com.example.walap.ui.screen.topPhoto
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
@@ -39,11 +36,11 @@ class TopPhotoFragment :
         }
 
         viewModel.getWallpaper()
-        Log.d("homeAbobe", "отправил запрос")
+
         viewModel.movieList.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {
-                    Log.d("homeAbobe", "зашел взагрузку")
+
                     binding.progressBar.visibility = View.VISIBLE
                 }
                 is Resource.Error -> {
@@ -51,7 +48,6 @@ class TopPhotoFragment :
                     Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT).show()
                 }
                 is Resource.Success -> {
-                    Log.d("homeAbobe", "зашел в все збс")
                     binding.progressBar.visibility = View.INVISIBLE
 
                     it.data?.let { it1 -> pagerAdapter.submitData(lifecycle, it1) }

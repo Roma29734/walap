@@ -7,7 +7,6 @@ import com.example.walap.base.BaseFragment
 import com.example.walap.databinding.FragmentCategoriesBinding
 import com.example.walap.ui.adapter.CategoriesAdapter
 import com.example.walap.ui.screen.nav.NavFragmentDirections
-import java.io.InputStream
 
 class CategoriesFragment :
     BaseFragment<FragmentCategoriesBinding>

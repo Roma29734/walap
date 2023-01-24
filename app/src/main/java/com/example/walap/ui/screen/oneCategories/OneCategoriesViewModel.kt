@@ -1,6 +1,5 @@
 package com.example.walap.ui.screen.oneCategories
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,15 +25,12 @@ class OneCategoriesViewModel @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     fun getWallpaper(query: String) {
         _oneCategoriesList.postValue(Resource.Loading())
-        Log.d("amega3","отправил запрос на получение")
         pagerRepository.getSearchPhoto(query = query)
             .cachedIn(viewModelScope)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(onNext = { result ->
-                Log.d("amega3","подписался на ответ ")
                 _oneCategoriesList.value = Resource.Success(result)
-                Log.d("amega3","присвоил ответ")
             }, onError = { exeption ->
                 _oneCategoriesList.postValue(Resource.Error(exeption.message.toString()))
             })

@@ -2,22 +2,16 @@ package com.example.walap.ui.screen.oneCategories
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.walap.R
 import com.example.walap.base.BaseFragment
 import com.example.walap.data.toTransition
-import com.example.walap.databinding.FragmentCategoriesBinding
 import com.example.walap.databinding.FragmentOneCategoriesBinding
 import com.example.walap.ui.adapter.WallpaperPagingAdapter
-import com.example.walap.ui.screen.nav.NavFragmentDirections
 import com.example.walap.utils.Resource
 
 class OneCategoriesFragment :
@@ -41,7 +35,8 @@ class OneCategoriesFragment :
 
         adapter.clickToImage = {
             val model = it.toTransition(it.urls.full)
-            val action = OneCategoriesFragmentDirections.actionOneCategoriesFragmentToDetailFragment(model)
+            val action =
+                OneCategoriesFragmentDirections.actionOneCategoriesFragmentToDetailFragment(model)
             mainNavController.navigate(action)
         }
 
@@ -50,7 +45,6 @@ class OneCategoriesFragment :
         viewModel.oneCategoriesList.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {
-                    Log.d("homeAbobe", "зашел взагрузку")
                     binding.progressBar.visibility = View.VISIBLE
                 }
                 is Resource.Error -> {
@@ -58,7 +52,6 @@ class OneCategoriesFragment :
                     Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT).show()
                 }
                 is Resource.Success -> {
-                    Log.d("homeAbobe", "зашел в все збс")
                     binding.progressBar.visibility = View.INVISIBLE
 
                     it.data?.let { it1 -> adapter.submitData(lifecycle, it1) }
@@ -71,7 +64,8 @@ class OneCategoriesFragment :
         adapter.addLoadStateListener { loadState ->
             if (loadState.refresh is LoadState.Loading ||
                 loadState.append is LoadState.Loading
-            ) { } else {
+            ) {
+            } else {
 
                 val errorState = when {
                     loadState.append is LoadState.Error -> loadState.append as LoadState.Error

@@ -1,14 +1,9 @@
 package com.example.walap.ui.screen.start
 
-
 import android.app.Application
-import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import com.example.walap.R
 import com.example.walap.data.model.entity.CategoriesEntity
 import com.example.walap.data.repository.WallpaperRepository
-import com.example.walap.utils.resourceUri
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -50,7 +45,7 @@ class StartViewModel @Inject constructor(
         Observable.just(listCategories)
             .subscribeOn(Schedulers.io())
             .subscribeBy { result ->
-                for(i in result.indices) {
+                for (i in result.indices) {
                     val name = result[i]
                     val image = imageView[i]
                     val model = CategoriesEntity(0, name, image)

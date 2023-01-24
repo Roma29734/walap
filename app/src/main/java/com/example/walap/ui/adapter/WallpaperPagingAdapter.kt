@@ -1,7 +1,6 @@
 package com.example.walap.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
@@ -11,11 +10,11 @@ import coil.load
 import com.example.walap.R
 import com.example.walap.data.model.photoModelItem.PhotoModelItem
 import com.example.walap.databinding.CardWallpaperPresentrBinding
-import com.google.gson.annotations.Until
 
-class WallpaperPagingAdapter : PagingDataAdapter<PhotoModelItem, WallpaperPagingAdapter.MyViewHolder>(
-    COMPARATOR
-) {
+class WallpaperPagingAdapter :
+    PagingDataAdapter<PhotoModelItem, WallpaperPagingAdapter.MyViewHolder>(
+        COMPARATOR
+    ) {
     inner class MyViewHolder(val binding: CardWallpaperPresentrBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(photo: PhotoModelItem) {
@@ -43,7 +42,7 @@ class WallpaperPagingAdapter : PagingDataAdapter<PhotoModelItem, WallpaperPaging
                     }, onSuccess = { _, _ ->
                         holder.binding.progressBar.isVisible = false
                     })
-                    placeholder( R.drawable.ic_plug )
+                    placeholder(R.drawable.ic_plug)
                 }
             }
             imageView.setOnClickListener {

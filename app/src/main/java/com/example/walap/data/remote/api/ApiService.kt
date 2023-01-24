@@ -4,7 +4,6 @@ import com.example.walap.data.model.PhotoModel
 import com.example.walap.data.model.SearchModel
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 

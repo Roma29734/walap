@@ -1,6 +1,5 @@
 package com.example.walap.ui.screen.topPhoto
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,19 +24,13 @@ class TopPhotoViewModel @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     fun getWallpaper() {
         _movieList.postValue(Resource.Loading())
-        Log.d("checkBagInIthernetConnect", "Вызываю полученние данных ViewModel")
         pagerRepository.getMovie()
             .cachedIn(viewModelScope)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ result ->
-                Log.d("checkBagInIthernetConnect", "Подписался на данные, обрабатываю их ViewModel")
-                Log.d("aboa", "$result")
                 _movieList.postValue(Resource.Success(result))
-                Log.d("aboa", "нету ошибка")
             }, { exeption ->
-                Log.d("checkBagInIthernetConnect", "Зашел в ошибку ViewModel")
-                Log.d("aboa", "зашел в ошибку")
                 _movieList.postValue(Resource.Error(exeption.message.toString()))
             })
     }

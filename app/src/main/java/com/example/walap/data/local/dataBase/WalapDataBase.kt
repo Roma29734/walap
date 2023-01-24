@@ -10,6 +10,6 @@ import com.example.walap.data.model.entity.CategoriesEntity
     version = 1,
     exportSchema = false
 )
-abstract class WalapDataBase: RoomDatabase() {
+abstract class WalapDataBase : RoomDatabase() {
     abstract fun wallpaperDao(): WallpaperDao
 }
