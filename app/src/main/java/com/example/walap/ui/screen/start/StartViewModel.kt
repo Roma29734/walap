@@ -3,6 +3,7 @@ package com.example.walap.ui.screen.start
 
 import android.app.Application
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.example.walap.R
 import com.example.walap.data.model.entity.CategoriesEntity
@@ -34,14 +35,14 @@ class StartViewModel @Inject constructor(
         )
 
     private val imageView = listOf<String>(
-        getUriImage(R.drawable.auto_categories),
-        getUriImage(R.drawable.amoled_categories),
-        getUriImage(R.drawable.animals_categories),
-        getUriImage(R.drawable.abstract_categories),
-        getUriImage(R.drawable.minimal_categories),
-        getUriImage(R.drawable.nature_categories),
-        getUriImage(R.drawable.sports_categories),
-        getUriImage(R.drawable.shows_categories),
+        getUriImage("auto_categories"),
+        getUriImage("amoled_categories"),
+        getUriImage("animals_categories"),
+        getUriImage("abstract_categories"),
+        getUriImage("minimal_categories"),
+        getUriImage("nature_categories"),
+        getUriImage("sports_categories"),
+        getUriImage("shows_categories"),
     )
 
 
@@ -59,11 +60,7 @@ class StartViewModel @Inject constructor(
     }
 
 
-    private fun getUriImage(image: Int): String {
-        val path =
-            Uri.parse("android.resource://com.example.walap/"
-                    + image)
-
-        return path.toString()
+    private fun getUriImage(image: String): String {
+        return "android.resource://com.example.walap/drawable/$image"
     }
 }

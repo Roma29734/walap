@@ -66,7 +66,7 @@ class TopPhotoFragment :
         pagerAdapter.addLoadStateListener { loadState ->
             if (loadState.refresh is LoadState.Loading ||
                 loadState.append is LoadState.Loading
-            ) { } else {
+            ) else {
 
                 val errorState = when {
                     loadState.append is LoadState.Error -> loadState.append as LoadState.Error
@@ -75,7 +75,7 @@ class TopPhotoFragment :
                     else -> null
                 }
                 errorState?.let {
-                    Toast.makeText(context, it.error.toString(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, it.error.message.toString(), Toast.LENGTH_LONG).show()
                 }
             }
         }

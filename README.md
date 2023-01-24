@@ -15,6 +15,7 @@ Additional libraries
 * Pager3
 * Room
 * Retrofit
+* androidx-navigation
 
 ---
 You can download the latest available version [here](https://t.me/apkPublicPrograms/13)

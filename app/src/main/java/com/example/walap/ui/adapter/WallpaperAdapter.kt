@@ -41,7 +41,7 @@ class WallpaperAdapter() : RecyclerView.Adapter<WallpaperAdapter.MyViewHolder>()
                 }, onSuccess = { _, _ ->
                     holder.binding.progressBar.isVisible = false
                 })
-                placeholder( R.drawable.ic_random )
+                placeholder( R.drawable.ic_plug )
             }
             setOnClickListener{
                 clickToImage?.let { it1 -> it1(positionPhotoModel) }

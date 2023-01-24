@@ -12,7 +12,6 @@ import com.example.walap.ui.adapter.WallpaperAdapter
 import com.example.walap.ui.screen.nav.NavFragmentDirections
 import com.example.walap.utils.Resource
 
-
 class RandomFragment :
     BaseFragment<FragmentRandomBinding>
         (FragmentRandomBinding::inflate) {

@@ -43,17 +43,13 @@ class WallpaperPagingAdapter : PagingDataAdapter<PhotoModelItem, WallpaperPaging
                     }, onSuccess = { _, _ ->
                         holder.binding.progressBar.isVisible = false
                     })
-                    placeholder( R.drawable.ic_random )
+                    placeholder( R.drawable.ic_plug )
                 }
             }
             imageView.setOnClickListener {
                 clickToImage?.let { it1 -> photo?.let { it2 -> it1(it2) } }
             }
         }
-
-//        getItem(position)?.let {
-//            holder.bind(it)
-//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -76,31 +72,3 @@ class WallpaperPagingAdapter : PagingDataAdapter<PhotoModelItem, WallpaperPaging
         }
     }
 }
-
-//class RepoListAdapter : PagingDataAdapter<Repository, RepoListAdapter.ViewHolder>(COMPARATOR) {
-//    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        val txtName: TextView = itemView.findViewById(R.id.txtName);
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val repo = getItem(position)
-//        holder.txtName.text = repo?.full_name
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        val view =
-//            LayoutInflater.from(parent.context).inflate(R.layout.layout_item_view, parent, false)
-//        return ViewHolder(view)
-//    }
-//
-//    companion object {
-//        private val COMPARATOR = object : DiffUtil.ItemCallback<Repository>() {
-//            override fun areItemsTheSame(oldItem: Repository, newItem: Repository): Boolean =
-//                oldItem.full_name == newItem.full_name
-//
-//            override fun areContentsTheSame(oldItem: Repository, newItem: Repository): Boolean =
-//                oldItem == newItem
-//
-//        }
-//    }
-//}
