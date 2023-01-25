@@ -27,6 +27,7 @@
             tools:src="@tools:sample/avatars"
             android:scaleType="centerCrop"
             />
+
     </androidx.cardview.widget.CardView>
 
     <include
@@ -36,6 +37,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <ImageButton
+        android:id="@+id/imgButtonDownload"
+        style="@style/imgButtonBackDetail"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_download" />
+
+    <ImageButton
+        android:id="@+id/imgButtonSetWallpaper"
+        style="@style/imgButtonBackDetail"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_download" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
