@@ -47,7 +47,7 @@ class DetailFragment :
             imgButtonDownload.setOnClickListener {
 
                 myExecutor.execute {
-                    mImage = mLoad(args.photo.url)
+                    mImage = mLoad(args.photo.urlDownload)
                     myHandler.post {
                         if (mImage != null) {
                             mSaveMediaToStorage(mImage)
@@ -57,9 +57,14 @@ class DetailFragment :
             }
 
             imgButtonSetWallpaper.setOnClickListener {
-                mImage = mLoad(args.photo.url)
-                myHandler.post {
-                    mImage?.let { it1 -> setWallpaper(it1) }
+                myExecutor.execute {
+                    mImage = mLoad(args.photo.urlDownload)
+                    myHandler.post {
+                        if (mImage != null) {
+                            mSaveMediaToStorage(mImage)
+                            mImage?.let { it1 -> setWallpaper(it1) }
+                        }
+                    }
                 }
             }
         }
@@ -90,7 +95,6 @@ class DetailFragment :
         return null
     }
 
-
     private fun mSaveMediaToStorage(bitmap: Bitmap?) {
         val filename = "${System.currentTimeMillis()}.jpg"
         var fos: OutputStream? = null
@@ -117,7 +121,7 @@ class DetailFragment :
         }
     }
 
-    fun setWallpaper(bitmap: Bitmap) {
+    private fun setWallpaper(bitmap: Bitmap) {
         val wallpaperManager = WallpaperManager.getInstance(context)
         wallpaperManager.setBitmap(bitmap)
         Toast.makeText(context ,"Wallpaper set!", Toast.LENGTH_SHORT).show()

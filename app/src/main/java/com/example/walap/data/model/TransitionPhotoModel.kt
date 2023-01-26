@@ -7,4 +7,5 @@ import kotlinx.parcelize.Parcelize
 data class TransitionPhotoModel(
     val url: String,
     val likes: Int,
+    val urlDownload: String
 ): Parcelable

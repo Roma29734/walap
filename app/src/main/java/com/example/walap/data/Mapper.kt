@@ -6,4 +6,5 @@ import com.example.walap.data.model.photoModelItem.PhotoModelItem
 fun PhotoModelItem.toTransition(urls: String) = TransitionPhotoModel(
     url = urls,
     likes = likes,
+    urlDownload = links.download
 )
