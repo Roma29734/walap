@@ -70,6 +70,12 @@
         <item name="android:textSize">23sp</item>
     </style>
 
+    <style name="textViewLoadingDialog" parent="TextAppearance.AppCompat" >
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
 <!--    -->
 
 <!--    MaterialButton-->
