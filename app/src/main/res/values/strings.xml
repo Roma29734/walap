@@ -6,4 +6,7 @@
     <string name="your_phone_screen">Your Phone Screen</string>
     <string name="lets_Start">Let\'s Start</string>
     <string name="enter_your_request">Enter your request</string>
+    <string name="loading..">Loading...</string>
+    <string name="top_photo">TopPhoto</string>
+    <string name="random">Random</string>
 </resources>

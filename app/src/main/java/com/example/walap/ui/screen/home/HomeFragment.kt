@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.FragmentActivity
+import com.example.walap.R
 import com.example.walap.base.BaseFragment
 import com.example.walap.databinding.FragmentHomeBinding
 import com.example.walap.ui.adapter.ViewPagerAdapter
@@ -24,7 +25,7 @@ class HomeFragment :
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            upBar.textView.text = "Walap"
+            upBar.textView.text = getString(R.string.app_name)
             viewPager.adapter = ViewPagerAdapter(contex as FragmentActivity)
             setingsTab()
         }
@@ -35,10 +36,10 @@ class HomeFragment :
             TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, pos ->
                 when (pos) {
                     0 -> {
-                        tab.text = "TopPhoto"
+                        tab.text = getString(R.string.top_photo)
                     }
                     1 -> {
-                        tab.text = "Random"
+                        tab.text = getString(R.string.random)
                     }
                 }
             }.attach()
