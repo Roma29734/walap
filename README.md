@@ -14,7 +14,7 @@ Technology stack:
 
 Additional libraries
 * Coil
-* Pager3
+* Paging3
 * Room
 * Retrofit
 * androidx-navigation
