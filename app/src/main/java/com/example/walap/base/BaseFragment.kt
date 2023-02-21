@@ -43,9 +43,4 @@ abstract class BaseFragment<B : ViewBinding>(private val inflate: Inflate<B>) :
         super.onViewCreated(view, savedInstanceState)
 
     }
-
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        _viewBinding = null
-//    }
 }

@@ -38,9 +38,9 @@ class WallpaperPagingAdapter :
             if (photo != null) {
                 imageView.load(photo.urls.small) {
                     listener(onStart = {
-                        holder.binding.progressBar.isVisible = true
+                        progressBar.isVisible = true
                     }, onSuccess = { _, _ ->
-                        holder.binding.progressBar.isVisible = false
+                        progressBar.isVisible = false
                     })
                     placeholder(R.drawable.ic_plug)
                 }
