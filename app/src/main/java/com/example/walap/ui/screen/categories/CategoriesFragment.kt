@@ -3,6 +3,7 @@ package com.example.walap.ui.screen.categories
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import com.example.walap.R
 import com.example.walap.base.BaseFragment
 import com.example.walap.databinding.FragmentCategoriesBinding
 import com.example.walap.ui.adapter.CategoriesAdapter
@@ -19,7 +20,7 @@ class CategoriesFragment :
         super.onViewCreated(view, savedInstanceState)
 
         binding.mainRecyclerView.adapter = adapter
-
+        binding.upBar.textView.text = getString(R.string.categories)
         adapter.clickToImage = {
             val action = NavFragmentDirections.actionNavFragmentToOneCategoriesFragment(it)
             mainNavController.navigate(action)

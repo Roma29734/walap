@@ -145,6 +145,12 @@
         <item name="searchHintIcon">@color/black</item>
     </style>
 
+    <style name="upBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
+    </style>
+
 <!--    -->
 
 </resources>

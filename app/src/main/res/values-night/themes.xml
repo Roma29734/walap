@@ -110,5 +110,11 @@
         <item name="searchIcon">@drawable/ic_search_black</item>
         <item name="android:searchHintIcon">@color/mainYellowAccent</item>
     </style>
+
+    <style name="upBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">@color/mainBlackRound</item>
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
+    </style>
 <!--    -->
 </resources>
