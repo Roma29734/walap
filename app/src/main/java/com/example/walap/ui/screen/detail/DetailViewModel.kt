@@ -31,41 +31,69 @@ class DetailViewModel @Inject constructor(
     val downloadState get() = _downloadState
 
     fun downloadWallpapers(url: String) {
-
-        downloadState.postValue(DetailState.Loading())
+        _downloadState.postValue(DetailState.Loading())
         var mImage: Bitmap?
         val myExecutor = Executors.newSingleThreadExecutor()
         val myHandler = Handler(Looper.getMainLooper())
-
         try {
             myExecutor.execute {
                 mImage = mLoad(url)
                 myHandler.post {
                     if (mImage != null) {
                         mSaveMediaToStorage(mImage)
-                        downloadState.postValue(DetailState.Success("Download success"))
+                        _downloadState.postValue(DetailState.Success("Download success"))
                     }
                 }
             }
         } catch (e: Exception) {
-            downloadState.postValue(DetailState.Error("Download error ${e.message}"))
+            _downloadState.postValue(DetailState.Error("Download error ${e.message}"))
         }
     }
 
     fun setWallpapers(url: String) {
 
-        downloadState.postValue(DetailState.Loading())
+        _downloadState.postValue(DetailState.Loading())
         var mImage: Bitmap?
         val myExecutor = Executors.newSingleThreadExecutor()
         val myHandler = Handler(Looper.getMainLooper())
-        myExecutor.execute {
-            mImage = mLoad(url)
-            myHandler.post {
-                if (mImage != null) {
-                    mSaveMediaToStorage(mImage)
-                    mImage?.let { it1 -> setWallpaper(it1) }
+        try {
+            myExecutor.execute {
+                mImage = mLoad(url)
+                myHandler.post {
+                    if (mImage != null) {
+                        mSaveMediaToStorage(mImage)
+                        mImage?.let { it1 -> setWallpaper(it1) }
+                        _downloadState.postValue(DetailState.Success("SetUp wallpaper success"))
+                    } else {
+                        _downloadState.postValue(DetailState.Error("SetUp error"))
+                    }
                 }
             }
+        } catch (e: Exception) {
+            _downloadState.postValue(DetailState.Error("SetUp error ${e.message.toString()}"))
+        }
+    }
+
+    fun setLockWallpapers(url: String) {
+        _downloadState.postValue(DetailState.Loading())
+        var mImage: Bitmap?
+        val myExecutor = Executors.newSingleThreadExecutor()
+        val myHandler = Handler(Looper.getMainLooper())
+        try {
+            myExecutor.execute {
+                mImage = mLoad(url)
+                myHandler.post {
+                    if (mImage != null) {
+                        mSaveMediaToStorage(mImage)
+                        mImage?.let { it1 -> setLockWallpaper(it1) }
+                        _downloadState.postValue(DetailState.Success("SetUp wallpaper success"))
+                    } else {
+                        _downloadState.postValue(DetailState.Error("SetUp error"))
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            _downloadState.postValue(DetailState.Error("SetUp error ${e.message.toString()}"))
         }
     }
 
@@ -125,6 +153,10 @@ class DetailViewModel @Inject constructor(
     private fun setWallpaper(bitmap: Bitmap) {
         val wallpaperManager = WallpaperManager.getInstance(context)
         wallpaperManager.setBitmap(bitmap)
-//        Toast.makeText(context, "Wallpaper set!", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setLockWallpaper(bitmap: Bitmap) {
+        val wallpaperManager = WallpaperManager.getInstance(context)
+        wallpaperManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK)
     }
 }

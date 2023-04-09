@@ -38,9 +38,14 @@ class DetailFragment :
                 viewModel.downloadWallpapers(args.photo.urlDownload)
             }
 
-            imgButtonSetWallpaper.setOnClickListener {
+            imgButtonSetWallpaperScreen.setOnClickListener {
 
                 viewModel.setWallpapers(args.photo.urlDownload)
+            }
+
+            imgButtonSetWallpaperLockScreen.setOnClickListener {
+
+                viewModel.setLockWallpapers(args.photo.urlDownload)
             }
         }
 

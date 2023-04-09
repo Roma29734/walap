@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
@@ -62,11 +63,15 @@ class OneCategoriesFragment :
 
     private fun settingAdapter() {
         adapter.addLoadStateListener { loadState ->
+
+//
+
             if (loadState.refresh is LoadState.Loading ||
                 loadState.append is LoadState.Loading
             ) {
+                binding.progressBar.isVisible = true
             } else {
-
+                binding.progressBar.isVisible = false
                 val errorState = when {
                     loadState.append is LoadState.Error -> loadState.append as LoadState.Error
                     loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error

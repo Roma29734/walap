@@ -6,6 +6,8 @@
         <entry key="..\:/tehnicals/walap/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.181" />
         <entry key="..\:/tehnicals/walap/app/src/main/res/drawable/ic_download.xml" value="0.169" />
         <entry key="..\:/tehnicals/walap/app/src/main/res/drawable/ic_plug.xml" value="0.169" />
+        <entry key="..\:/tehnicals/walap/app/src/main/res/drawable/ic_screen.xml" value="0.274" />
+        <entry key="..\:/tehnicals/walap/app/src/main/res/drawable/ic_screen_lock.xml" value="0.274" />
         <entry key="..\:/tehnicals/walap/app/src/main/res/drawable/ic_search.xml" value="0.169" />
         <entry key="..\:/tehnicals/walap/app/src/main/res/drawable/ic_search_black.xml" value="0.169" />
         <entry key="..\:/tehnicals/walap/app/src/main/res/drawable/ic_set_wallpaper.xml" value="0.169" />
@@ -17,7 +19,7 @@
         <entry key="..\:/tehnicals/walap/app/src/main/res/layout/card_wallpaper_presentr.xml" value="0.33177083333333335" />
         <entry key="..\:/tehnicals/walap/app/src/main/res/layout/categories_card.xml" value="0.25" />
         <entry key="..\:/tehnicals/walap/app/src/main/res/layout/fragment_categories.xml" value="0.33177083333333335" />
-        <entry key="..\:/tehnicals/walap/app/src/main/res/layout/fragment_detail.xml" value="0.25" />
+        <entry key="..\:/tehnicals/walap/app/src/main/res/layout/fragment_detail.xml" value="0.33" />
         <entry key="..\:/tehnicals/walap/app/src/main/res/layout/fragment_home.xml" value="0.33177083333333335" />
         <entry key="..\:/tehnicals/walap/app/src/main/res/layout/fragment_nav.xml" value="0.33177083333333335" />
         <entry key="..\:/tehnicals/walap/app/src/main/res/layout/fragment_one_categories.xml" value="0.33177083333333335" />

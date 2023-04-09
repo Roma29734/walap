@@ -3,6 +3,7 @@ package com.example.walap.ui.screen.topPhoto
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
@@ -62,8 +63,10 @@ class TopPhotoFragment :
         pagerAdapter.addLoadStateListener { loadState ->
             if (loadState.refresh is LoadState.Loading ||
                 loadState.append is LoadState.Loading
-            ) else {
-
+            ) {
+                binding.progressBar.isVisible = true
+            }else {
+                binding.progressBar.isVisible = false
                 val errorState = when {
                     loadState.append is LoadState.Error -> loadState.append as LoadState.Error
                     loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error

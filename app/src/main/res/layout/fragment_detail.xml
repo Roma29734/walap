@@ -7,6 +7,8 @@
     tools:context=".ui.screen.detail.DetailFragment">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        style="@style/cardViewMainImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
@@ -16,17 +18,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/cardViewMainImageView"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/mainImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:src="@tools:sample/avatars"
             android:scaleType="centerCrop"
-            />
+            tools:src="@tools:sample/avatars" />
 
     </androidx.cardview.widget.CardView>
 
@@ -44,21 +43,32 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imgButtonSetWallpaperScreen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgButtonSetWallpaperScreen"
         app:srcCompat="@drawable/ic_download" />
 
     <ImageButton
-        android:id="@+id/imgButtonSetWallpaper"
+        android:id="@+id/imgButtonSetWallpaperScreen"
         style="@style/imgButtonBackDetail"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/imgButtonDownload"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_set_wallpaper" />
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_screen" />
+
+    <ImageButton
+        android:id="@+id/imgButtonSetWallpaperLockScreen"
+        style="@style/imgButtonBackDetail"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgButtonSetWallpaperScreen"
+        app:layout_constraintEnd_toStartOf="@+id/imgButtonSetWallpaperScreen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_screen_lock" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
