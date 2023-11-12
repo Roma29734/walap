@@ -10,7 +10,7 @@ import com.example.walap.R
 import com.example.walap.base.BaseFragment
 import com.example.walap.databinding.FragmentNavBinding
 
-class NavFragment :
+class  NavFragment :
     BaseFragment<FragmentNavBinding>
         (FragmentNavBinding::inflate) {
 

@@ -1,5 +1,6 @@
 package com.example.walap.ui.screen.topPhoto
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,6 +22,7 @@ class TopPhotoViewModel @Inject constructor(
     private val _movieList = MutableLiveData<Resource<PagingData<PhotoModelItem>>>()
     var movieList: LiveData<Resource<PagingData<PhotoModelItem>>> = _movieList
 
+    @SuppressLint("CheckResult")
     @OptIn(ExperimentalCoroutinesApi::class)
     fun getWallpaper() {
         _movieList.postValue(Resource.Loading())
